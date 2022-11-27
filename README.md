@@ -1,6 +1,6 @@
 # docker-compose-laravel-app
 
-A simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development with Phpmyadmin.
+A simplified Docker Compose workflow that sets up a Laravel network of containers for local Laravel development with Phpmyadmin.
 
 ## Usage
 
