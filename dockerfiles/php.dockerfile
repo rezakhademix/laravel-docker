@@ -34,17 +34,10 @@ RUN apk add --no-cache \
     libpng-dev \
     jpeg-dev
 
-RUN docker-php-ext-install exif
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif zip soap pcntl bcmath curl
 
-RUN docker-php-ext-configure zip
-RUN docker-php-ext-install zip
-
-RUN docker-php-ext-configure gd --enable-gd --with-jpeg
-RUN docker-php-ext-install gd
-
-RUN docker-php-ext-install soap
-
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
+    	&& docker-php-ext-install -j$(nproc) gd
 
 RUN mkdir -p /usr/src/php/ext/redis \
     && curl -L https://github.com/phpredis/phpredis/archive/5.3.4.tar.gz | tar xvz -C /usr/src/php/ext/redis --strip 1 \

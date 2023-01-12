@@ -38,9 +38,9 @@ volumes:
   - ./mysql:/var/lib/mysql
 ```
 
-3. If you want to initialize database data with a sql file you should create a `docker-entrypoint-initdb.d` folder inside `./mysql` and put your `db.sql` file into it.
+1. If you want to initialize database data with a sql file you should create a `docker-entrypoint-initdb.d` folder inside `./mysql` and put your `db.sql` file into it.
 
-4. Samething abour redis container so you should decide about redis persistent data:(optional)
+2. Samething abour redis container so you should decide about redis persistent data:(optional)
 
 #### another way of doing the 2,3:
 
@@ -60,7 +60,7 @@ Access container as interactive shell and see output:
 docker exec -it <container id> sh
 ```
 
-Tip: You may use /bin/bash or just bash so you should inspect your image to understand CMD part and change current
+Tip: You may use /bin/bash or just bash so after installing bash, you should inspect your image to understand CMD part and change current
 option to whatever you want. For this purpose run:
 
 ```

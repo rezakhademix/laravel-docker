@@ -42,6 +42,10 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
       TZ: "Asia/Tehran"
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+      retries: 3
+      timeout: 5s
     networks:
       - laravel
 
@@ -57,6 +61,7 @@ services:
       - "9000:9000"
     volumes:
       - ./src:/var/www/html:delegated
+      - ./dockerfiles/configs/custom.ini:/usr/local/etc/php/conf.d/custom.ini
     networks:
       - laravel
 
@@ -69,6 +74,7 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PASSWORD: "${DB_PASSWORD}"
+      UPLOAD_LIMIT: 64M
     depends_on:
       - mysql
     networks:
@@ -80,6 +86,10 @@ services:
     restart: unless-stopped
     ports:
       - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      retries: 3
+      timeout: 5s
     networks:
       - laravel
 
