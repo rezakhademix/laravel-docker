@@ -49,8 +49,8 @@ services:
     networks:
       - laravel
 
-  app:
-    container_name: 'app'
+  php:
+    container_name: 'php'
     build:
       context: ./dockerfiles
       dockerfile: php.dockerfile
