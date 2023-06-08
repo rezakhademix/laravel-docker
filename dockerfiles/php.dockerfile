@@ -1,4 +1,4 @@
-FROM php:8-fpm-alpine
+FROM php:8.1-fpm-alpine
 
 ARG UID
 ARG GID
@@ -12,7 +12,7 @@ WORKDIR /var/www/html
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-# MacOS staff group's gid is 20
+# MacOS staff group's
 RUN delgroup dialout
 
 RUN addgroup -g ${GID} --system laravel
@@ -32,12 +32,15 @@ RUN apk add --no-cache \
     zip \
     libpng \
     libpng-dev \
-    jpeg-dev
+    jpeg-dev \
+    oniguruma-dev \
+    curl-dev \
+    freetype-dev 
 
 RUN docker-php-ext-install pdo pdo_mysql mbstring exif zip soap pcntl bcmath curl
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
-    	&& docker-php-ext-install -j$(nproc) gd
+    && docker-php-ext-install -j$(nproc) gd
 
 RUN mkdir -p /usr/src/php/ext/redis \
     && curl -L https://github.com/phpredis/phpredis/archive/5.3.4.tar.gz | tar xvz -C /usr/src/php/ext/redis --strip 1 \
