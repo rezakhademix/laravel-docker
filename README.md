@@ -26,6 +26,10 @@ Three additional containers are included that handle Composer, NPM, and Artisan 
 -   `docker compose run --rm npm run dev`
 -   `docker compose run --rm artisan migrate`
 
+## Makefile
+
+There is a `makefile` which can help you to run every docker or artisan commands easily. If you're not familiar with [GNU Makefile](https://www.gnu.org/software/make/manual/make.html) it's ok and you can still use this repository, but with `makefile` you can manage different commands easily! Just install [GNU Makefile](https://www.gnu.org/software/make/manual/make.html) and run make in repository directory and you will see a help command to use it.
+
 ## Persistent MySQL Storage
 
 By default, whenever you bring down the Docker network, your MySQL data will be removed after the containers are destroyed. If you would like to have persistent data that remains after bringing containers down and back up, do the following:
@@ -52,7 +56,7 @@ volumes:
     driver: local
 ```
 
-## docker exec container
+## Docker exec container
 
 Access container as interactive shell and see output:
 
