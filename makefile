@@ -18,10 +18,10 @@ restart: ## docker compose restart
 	docker compose restart
 
 composer-install: ## composer install
-	docker compose run --rm composer i
+	docker compose run --rm composer install
 
 npm-install: ## npm install
-	docker compose run --rm npm i
+	docker compose run --rm npm install
 
 tinker: ## artisan tinker
 	docker compose run --rm artisan tinker
