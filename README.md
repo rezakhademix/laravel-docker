@@ -40,7 +40,7 @@ By default, whenever you bring down the Docker network, your MySQL data will be 
 ```
 volumes:
   - ./mysql:/var/lib/mysql
-```
+``` 
 
 1. If you want to initialize database data with a sql file you should create a `docker-entrypoint-initdb.d` folder inside `./mysql` and put your `db.sql` file into it.
 
@@ -52,9 +52,20 @@ volumes:
 volumes:
   mysql:
     driver: local
+```
+
+If you would like to have persistent redis data that remains after bringing containers down and back up:
+```
+volumes:
+  - redis:/data
+```
+
+volumes:
+  mysql:
+    driver: local
   redis:
     driver: local
-```
+``` 
 
 ## Docker exec container
 
