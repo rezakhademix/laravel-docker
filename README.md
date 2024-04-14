@@ -28,7 +28,7 @@ Three additional containers are included that handle Composer, NPM, and Artisan 
 
 ## Makefile
 
-There is a `makefile` which can help you to run every docker or artisan commands easily. If you're not familiar with [GNU Makefile](https://www.gnu.org/software/make/manual/make.html) it's ok and you can still use this repository, but with `makefile` you can manage different commands easily! Just install [GNU Makefile](https://www.gnu.org/software/make/manual/make.html) and run make in repository directory and you will see a help command to use it.
+There is a `makefile` which can help you to run every docker or artisan command easily. If you're not familiar with [GNU Makefile](https://www.gnu.org/software/make/manual/make.html) it's ok and you can still use this repository (even you can delete `makefile`), but with `makefile` you can manage different commands easier and better! Before using a `makefile` just install it from [GNU Makefile](https://www.gnu.org/software/make/manual/make.html) and run `make` command in repository root directory and you will see a help result to use it.
 
 ## Persistent MySQL Storage
 
