@@ -20,8 +20,9 @@ restart: ## docker compose restart
 composer-install: ## composer install
 	docker compose run --rm composer install
 
-npm-install: ## npm install
-	docker compose run --rm npm install
+composer: ## run composer commands
+	docker compose run --rm composer $(filter-out $@,$(MAKECMDGOALS))
+%:
 
 tinker: ## artisan tinker
 	docker compose run --rm artisan tinker
@@ -31,10 +32,27 @@ art: ## run artisan command
 %:
 	@:	
 
+npm: ## run npm command
+	docker compose run --rm npm $(filter-out $@,$(MAKECMDGOALS))
+%:
+	@:	
+
 migration: ## make a new migration
 	docker compose run --rm artisan make:migration $(filter-out $@,$(MAKECMDGOALS))
 %:
 	@:	
+
+migrate: ## run artisan migrate
+	docker compose run --rm artisan migrate
+
+horizon: ## run horizon
+	docker compose run --rm artisan horizon
+
+pint: ## format codes with pint
+	docker compose run php ./vendor/bin/pint
+
+test: ## run tests
+	docker compose run --rm artisan test
 
 # makefile help
 help:
