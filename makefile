@@ -2,6 +2,9 @@
 
 default: help
 
+build: ## run docker compose build
+	docker compose build
+
 ps: ## docker compose ps
 	docker compose ps
 
