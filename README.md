@@ -1,6 +1,11 @@
 # Dockerize Laravel App
 
-A simplified Docker Compose workflow that sets up a Laravel network of containers for local Laravel development with Phpmyadmin.
+
+NOTE: [If you want to Dockerize Laravel, Postgres, Nginx, PGAdmin, Adminer, Mailhog, Npm and Redis. Please use this repo:](https://github.com/rezakhademix/laravel-postgres-docker)
+
+
+
+A simplified Docker Compose workflow that sets up a Laravel network of containers for Laravel development. (Laravel, Mysql, Nginx, PhpMyAdmin, Npm and Redis)
 
 ## Usage
 
