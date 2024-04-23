@@ -25,9 +25,9 @@ The following are built for our web server, with their exposed ports detailed:
 -   **redis** - `:6379`
 -   **phpmyadmin** - `:8081`
 
-Three additional containers are included that handle Composer, NPM, and Artisan commands _without_ having to have these platforms installed on your local computer. Use the following command examples from your project root, modifying them to fit your particular use case.
+Use the following command examples from your root directory to run Composer, NPM or Artisan commands:
 
--   `docker compose run --rm composer update`
+-   `docker compose run --rm composer install`
 -   `docker compose run --rm npm run dev`
 -   `docker compose run --rm artisan migrate`
 
