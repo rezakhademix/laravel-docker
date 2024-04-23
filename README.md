@@ -5,19 +5,19 @@ NOTE: [If you want to Dockerize Laravel, Postgres, Nginx, PGAdmin, Adminer, Mail
 
 
 
-A simplified Docker Compose workflow that sets up a Laravel network of containers for Laravel development. (Laravel, Mysql, Nginx, PhpMyAdmin, Npm and Redis)
+A simplified Docker Compose workflow that sets up relevant containers for Laravel development. (Laravel, Mysql, Nginx, PhpMyAdmin, Npm and Redis)
 
 ## Usage
 
 To get started, make sure you have [Docker installed](https://docs.docker.com/docker-for-mac/install/) on your system, and then clone this repo.
 
-Next, navigate in your terminal to the directory you cloned this, and spin up the containers for the web server by running `docker compose up -d --build`.
+Next, navigate in your terminal to the directory you cloned this repositoruy and run `docker compose up -d --build`.
 
-After that completes, follow the steps from the [src/README.md](src/README.md) file to get your Laravel project added in (or create a new blank Laravel app).
+After that, follow the steps from the [src/README.md](src/README.md) file to get your Laravel project up & running or create a new Laravel app.
 
 **Note**: Your MySQL database host name should be `mysql`, **note** `localhost`. The username and database should both be `homestead` with a password of `secret`.
 
-The following are built for our web server, with their exposed ports detailed:
+The containers and their exposed ports are:
 
 -   **nginx** - `:80`
 -   **mysql** - `:3306`
@@ -48,8 +48,6 @@ volumes:
 ``` 
 
 1. If you want to initialize database data with a sql file you should create a `docker-entrypoint-initdb.d` folder inside `./mysql` and put your `db.sql` file into it.
-
-2. Samething abour redis container so you should decide about redis persistent data:(optional)
 
 #### another way of doing the 2,3:
 
@@ -89,13 +87,12 @@ docker inspect [imageID]
 
 ## Usage in Production
 
-Tip: Don't forget to install and configure opcache
-
-While I originally created this template for local development, it's robust enough to be used in basic Laravel application deployments. The biggest recommendation would be to ensure that HTTPS is enabled by making additions to the `nginx/default.conf` file and utilizing something like [Let's Encrypt](https://hub.docker.com/r/linuxserver/letsencrypt) to produce an SSL certificate.
+Tip 1: Don't forget to configure opcache
+Tip 2: Don't forget about SSL
 
 ## Compiling Assets
 
-This configuration should be able to compile assets with both [laravel mix](https://laravel-mix.com/) and [vite](https://vitejs.dev/). In order to get started, you first need to add ` --host 0.0.0.0` after the end of your relevant dev command in `package.json`. So for example, with a Laravel project using Vite, you should see:
+It is better to compile assets in production mode. You need to add ` --host 0.0.0.0` after the end of your dev command in `package.json`. For example, with a Laravel project using Vite, you should have:
 
 ```json
 "scripts": {
@@ -109,6 +106,4 @@ Then, run the following commands to install your dependencies and start the dev 
 -   `docker compose run --rm npm install`
 -   `docker compose run --rm --service-ports npm run dev`
 
-After that, you should be able to use `@vite` directives to enable hot-module reloading on your local Laravel application.
-
-Want to build for production? Simply run `docker compose run --rm npm run build`.
+If you want to build for production? simply run `docker compose run --rm npm run build`.
