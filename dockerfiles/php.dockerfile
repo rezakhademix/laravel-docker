@@ -37,7 +37,7 @@ RUN apk add --no-cache \
     curl-dev \
     freetype-dev 
 
-RUN docker-php-ext-install pdo pdo_mysql mbstring exif zip soap pcntl bcmath curl
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif zip soap pcntl bcmath curl zip opcache sockets posix
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
