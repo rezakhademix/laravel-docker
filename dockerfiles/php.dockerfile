@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 ARG UID
 ARG GID
@@ -35,7 +35,9 @@ RUN apk add --no-cache \
     jpeg-dev \
     oniguruma-dev \
     curl-dev \
-    freetype-dev 
+    freetype-dev \
+    bash \
+    linux-headers
 
 RUN docker-php-ext-install pdo pdo_mysql mbstring exif zip soap pcntl bcmath curl zip opcache sockets posix
 
