@@ -39,7 +39,7 @@ RUN apk add --no-cache \
     bash \
     linux-headers
 
-RUN docker-php-ext-install pdo pdo_mysql mbstring exif zip soap pcntl bcmath curl zip opcache sockets posix
+RUN docker-php-ext-install pdo pdo_mysql mbstring exif zip soap pcntl bcmath curl zip opcache sockets
 
 RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
